@@ -1,5 +1,5 @@
 ID,Name,Email,PreferredGame,SkillLevel,PreferredRole,PersonalityScore,PersonalityType
-P001,Participant_1,user1@university.edu,Chess,2,Strategist,95,Leader
+P001,Participant_1,user1@university.edu,Chess,2,Strategist,60,Thinker
 P002,Participant_2,user2@university.edu,FIFA,5,Attacker,80,Balanced
 P003,Participant_3,user3@university.edu,FIFA,4,Defender,66,Thinker
 P004,Participant_4,user4@university.edu,Basketball,4,Supporter,91,Leader

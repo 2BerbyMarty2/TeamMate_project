@@ -97,6 +97,7 @@ public class TeamManager {
     }
 
     // Menu method to ask team size from user
+
     public static void runTeamFormationMenu(ArrayList<Player> players, Scanner sc) {
         System.out.print("Enter desired team size: ");
         int teamSize = sc.nextInt();
@@ -104,5 +105,14 @@ public class TeamManager {
 
         ArrayList<ArrayList<Player>> teams = formBalancedTeams(players, teamSize);
         printTeams(teams);
+
+        System.out.print("Save teams to CSV? (yes/no): ");
+        String save = sc.nextLine().trim().toLowerCase();
+
+        if (save.equals("yes")) {
+            CSVManager.exportTeamsToCSV("teams_output.csv", teams);
+        }
     }
+
+
 }

@@ -41,10 +41,15 @@ public class Player extends User {
 
     @Override
     public String toString() {
-        return "\nID: " + getID() + ", Name: " + getName() + ", Email: " + getEmail() +
-                ", Game: " + preferredGame + ", Skill: " + skillLevel +
-                ", Role: " + preferredRole +
-                ", PersonalityScore: " + personalityScore +
-                ", PersonalityType: " + personalityType;
+        return "========== PLAYER PROFILE ==========\n" +
+                "ID              : " + getID() + "\n" +
+                "Name            : " + getName() + "\n" +
+                "Email           : " + getEmail() + "\n" +
+                "Preferred Game  : " + preferredGame + "\n" +
+                "Skill Level     : " + skillLevel + "\n" +
+                "Preferred Role  : " + preferredRole + "\n" +
+                "Personality Score: " + personalityScore + "\n" +
+                "Personality Type : " + personalityType + "\n" +
+                "====================================";
     }
 }
