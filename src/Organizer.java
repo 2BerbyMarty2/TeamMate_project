@@ -43,5 +43,4 @@ public class Organizer extends User {
                 "Password        : " + password + "\n" +
                 "=======================================";
     }
-
 }

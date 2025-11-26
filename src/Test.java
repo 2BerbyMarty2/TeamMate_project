@@ -1,11 +1,27 @@
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Scanner;
 
 public class Test {
 
     private static Scanner sc = new Scanner(System.in);
-    private static final ArrayList<Organizer> organizers = CSVManager.importOrganizersFromCSV("organizers.csv");
+
+    // Map Organizer ID to Organizer object for O(1) lookup access
+    private static final HashMap<String, Organizer> organizerMap = loadOrganizerMap();
+
     private static final ArrayList<Player> players = CSVManager.importPlayersFromCSV("participants_sample.csv");
+
+    // Convert List from CSV into a HashMap for efficient access
+    private static HashMap<String, Organizer> loadOrganizerMap() {
+        ArrayList<Organizer> list = CSVManager.importOrganizersFromCSV("organizers.csv");
+        HashMap<String, Organizer> map = new HashMap<>();
+
+        for (Organizer o : list) {
+            map.put(o.getID(), o);
+        }
+
+        return map;
+    }
 
     public static void main(String[] args) {
         while (true){
@@ -35,28 +51,25 @@ public class Test {
         }
     }
 
-
     public static void organizerLogin() {
         System.out.print("Enter Organizer ID: ");
         String id = sc.nextLine();
         System.out.print("Enter Password: ");
         String password = sc.nextLine();
 
-        Organizer loggedIn = null;
-        for (Organizer o : organizers) {
-            if (o.getID().equals(id) && o.getPassword().equals(password)) {
-                loggedIn = o;
-                break;
-            }
-        }
+        // Retrieve the organizer directly using the ID key (Instant Lookup)
+        Organizer loggedIn = organizerMap.get(id);
 
-        if (loggedIn == null) {
+        // Hash the input password to compare it with the stored hash
+        String inputHash = PasswordUtils.hashPassword(password);
+
+        // Verify organizer exists and password matches
+        if (loggedIn != null && loggedIn.getPassword().equals(inputHash)) {
+            System.out.println("Welcome " + loggedIn.getName() + "!");
+            organizerMenu(loggedIn);
+        } else {
             System.out.println("Invalid ID or password. Returning to main menu.");
-            return;
         }
-
-        System.out.println("Welcome " + loggedIn.getName() + "!");
-        organizerMenu(loggedIn);
     }
 
     public static void organizerMenu(Organizer organizer) {
@@ -81,18 +94,27 @@ public class Test {
                 case "3":
                     System.out.print("Enter new password: ");
                     String newPass = sc.nextLine();
-                    organizer.setPassword(newPass);
-                    System.out.println("Password updated successfully!");
+
+                    // Hash the new password before storing
+                    String hashedPass = PasswordUtils.hashPassword(newPass);
+                    organizer.setPassword(hashedPass);
+
+                    // Convert map values back to list to save updates to CSV
+                    ArrayList<Organizer> listToSave = new ArrayList<>(organizerMap.values());
+                    CSVManager.exportOrganizersToCSV("organizers.csv", listToSave);
+
+                    System.out.println("Password updated and saved securely!");
                     break;
                 case "4":
                     System.out.println("Logging out...");
-                    return; // Back to main menu
+                    return;
                 default:
                     System.out.println("Invalid choice! Try again.");
             }
             System.out.println();
         }
     }
+
     public static void user_login() {
         System.out.println("========== USER LOGIN ==========");
         System.out.print("Enter your Player ID: ");
@@ -100,7 +122,6 @@ public class Test {
         String id = sc.nextLine().trim();
         Player loggedIn = null;
 
-        // Search existing users
         for (Player p : players) {
             if (p.getID().equalsIgnoreCase(id)) {
                 loggedIn = p;
@@ -108,7 +129,6 @@ public class Test {
             }
         }
 
-        // If user exists
         if (loggedIn != null) {
             System.out.println("Login successful!");
             viewUserProfile(loggedIn);
@@ -124,7 +144,6 @@ public class Test {
             return;
         }
 
-        // If user does NOT exist -> register
         System.out.println("No user found with ID: " + id);
         System.out.print("Would you like to register? (yes/no): ");
 
@@ -135,42 +154,33 @@ public class Test {
             return;
         }
 
-        // Registration Inputs
         System.out.println("===== NEW USER REGISTRATION =====");
-
         System.out.print("Enter Name: ");
         String name = sc.nextLine();
-
         System.out.print("Enter Email: ");
         String email = sc.nextLine();
-
         System.out.print("Enter Preferred Game: ");
         String game = sc.nextLine();
-
         System.out.print("Enter Skill Level (1-100): ");
         int skill = Integer.parseInt(sc.nextLine());
-
         System.out.print("Enter Preferred Role: ");
         String role = sc.nextLine();
 
-        // Create new Player
         Player newPlayer = new Player(id, name, email, game, skill, role, 0, "Unknown");
         players.add(newPlayer);
 
-        // Run personality survey immediately
         System.out.println("\nYou must now complete a Personality Survey.");
         PersonalitySurvey.runSurvey(newPlayer, sc);
 
-        // Save to CSV
         CSVManager.exportPlayersToCSV("participants_sample.csv", players);
 
         System.out.println("Registration complete!");
         viewUserProfile(newPlayer);
     }
+
     public static void viewUserProfile(Player user) {
         System.out.println("=========== USER PROFILE ===========");
-        System.out.println(user.toString()); // Uses your Player.toString() override
+        System.out.println(user.toString());
         System.out.println("====================================");
     }
-
 }

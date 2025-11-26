@@ -75,7 +75,8 @@ public class CSVManager {
     public static ArrayList<Organizer> importOrganizersFromCSV(String filename) {
         ArrayList<Organizer> organizers = new ArrayList<>();
         try (BufferedReader br = new BufferedReader(new FileReader(filename))) {
-            br.readLine(); // skip header
+            br.readLine();
+            // skip header
             String line;
             int count = 0;
             while ((line = br.readLine()) != null) {
@@ -132,7 +133,8 @@ public class CSVManager {
 
         try (BufferedReader br = new BufferedReader(new FileReader(filename))) {
 
-            String line = br.readLine(); // skip header
+            String line = br.readLine();
+            // skip header
 
             while ((line = br.readLine()) != null) {
                 String[] parts = line.split(",");

@@ -76,7 +76,6 @@ public class BalancedTeamStrategy implements TeamFormationStrategy {
         for (Player p : team) {
             gameCount.put(p.getPreferredGame(), gameCount.getOrDefault(p.getPreferredGame(), 0) + 1);
         }
-
     }
 
     private void ensureRoleDiversity(ArrayList<Player> team, int teamSize) {
