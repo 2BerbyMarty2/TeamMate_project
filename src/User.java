@@ -1,31 +1,32 @@
-public class User {
+public class User{
     private String ID;
     private String name;
     private String email;
 
-    public User(String ID, String name, String email) {
+    // Constructor
+    public User(String ID, String name, String email){
         this.ID = ID;
         this.name = name;
         this.email = email;
     }
 
-    public String getID() {
+    // Getters and Setters
+    public String getID(){
         return ID;
     }
-    public void setID(String ID) {
+    public void setID(String ID){
         this.ID = ID;
     }
-    public String getName() {
+    public String getName(){
         return name;
     }
-    public void setName(String name) {
+    public void getName(String name){
         this.name = name;
     }
-    public String getEmail() {
+    public String getEmail(){
         return email;
     }
-    public void setEmail(String email) {
+    public void setEmail(String email){
         this.email = email;
     }
-
 }

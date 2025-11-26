@@ -124,7 +124,7 @@ public class Test {
             return;
         }
 
-        // If user does NOT exist → register
+        // If user does NOT exist -> register
         System.out.println("No user found with ID: " + id);
         System.out.print("Would you like to register? (yes/no): ");
 
