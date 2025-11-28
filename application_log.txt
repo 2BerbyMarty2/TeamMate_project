@@ -3,3 +3,16 @@
 2025-11-28 13:51:48 | [INFO]  Application Started.
 2025-11-28 13:51:52 | [WARN]  Player Login Failed: Unknown ID aerv
 2025-11-28 13:52:16 | [INFO]  New Player Registered: arva (aerv)
+2025-11-28 14:15:14 | [INFO]  Application Started.
+2025-11-28 14:15:19 | [WARN]  Player Login Failed: Unknown ID wefqw
+2025-11-28 14:15:35 | [INFO]  New Player Registered: arvaer (wefqw)
+2025-11-28 23:04:45 | [INFO]  Application Started.
+2025-11-28 23:05:18 | [INFO]  Organizer Login Success: Alice Smith (ORG001)
+2025-11-28 23:06:10 | [INFO]  Generating teams using strategy: GameVarietyStrategy
+2025-11-28 23:22:58 | [INFO]  Application Started.
+2025-11-28 23:23:25 | [INFO]  Organizer Login Success: Alice Smith (ORG001)
+2025-11-29 07:01:52 | [INFO]  Application Started.
+2025-11-29 07:01:58 | [WARN]  Player Login Failed: Unknown ID savae
+2025-11-29 07:02:14 | [INFO]  Organizer Login Success: Alice Smith (ORG001)
+2025-11-29 07:02:23 | [INFO]  Generating teams using strategy: UnifiedStrategy
+2025-11-29 07:03:00 | [INFO]  Generating teams using strategy: UnifiedStrategy
