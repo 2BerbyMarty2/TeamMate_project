@@ -5,25 +5,21 @@ import java.util.Scanner;
 public class Test {
 
     private static Scanner sc = new Scanner(System.in);
-
-    // Map Organizer ID to Organizer object for O(1) lookup access
     private static final HashMap<String, Organizer> organizerMap = loadOrganizerMap();
-
     private static final ArrayList<Player> players = CSVManager.importPlayersFromCSV("participants_sample.csv");
 
-    // Convert List from CSV into a HashMap for efficient access
     private static HashMap<String, Organizer> loadOrganizerMap() {
         ArrayList<Organizer> list = CSVManager.importOrganizersFromCSV("organizers.csv");
         HashMap<String, Organizer> map = new HashMap<>();
-
         for (Organizer o : list) {
             map.put(o.getID(), o);
         }
-
         return map;
     }
 
     public static void main(String[] args) {
+        ActivityLogger.log("Application Started."); // LOGGING
+
         while (true){
             System.out.println("---------------------------MAIN-MENU---------------------------");
             System.out.println("01. Organizer Log in.");
@@ -43,6 +39,7 @@ public class Test {
                     break;
                 case "3":
                     System.out.println("EXIT........");
+                    ActivityLogger.log("Application Closed by User."); // LOGGING
                     System.exit(0);
                     break;
                 default:
@@ -57,17 +54,15 @@ public class Test {
         System.out.print("Enter Password: ");
         String password = sc.nextLine();
 
-        // Retrieve the organizer directly using the ID key (Instant Lookup)
         Organizer loggedIn = organizerMap.get(id);
-
-        // Hash the input password to compare it with the stored hash
         String inputHash = PasswordUtils.hashPassword(password);
 
-        // Verify organizer exists and password matches
         if (loggedIn != null && loggedIn.getPassword().equals(inputHash)) {
+            ActivityLogger.log("Organizer Login Success: " + loggedIn.getName() + " (" + loggedIn.getID() + ")"); // LOGGING
             System.out.println("Welcome " + loggedIn.getName() + "!");
             organizerMenu(loggedIn);
         } else {
+            ActivityLogger.logWarning("Organizer Login Failed: Invalid Credentials for ID " + id); // LOGGING
             System.out.println("Invalid ID or password. Returning to main menu.");
         }
     }
@@ -95,17 +90,17 @@ public class Test {
                     System.out.print("Enter new password: ");
                     String newPass = sc.nextLine();
 
-                    // Hash the new password before storing
                     String hashedPass = PasswordUtils.hashPassword(newPass);
                     organizer.setPassword(hashedPass);
 
-                    // Convert map values back to list to save updates to CSV
                     ArrayList<Organizer> listToSave = new ArrayList<>(organizerMap.values());
                     CSVManager.exportOrganizersToCSV("organizers.csv", listToSave);
 
+                    ActivityLogger.log("Organizer Password Changed: " + organizer.getID()); // LOGGING
                     System.out.println("Password updated and saved securely!");
                     break;
                 case "4":
+                    ActivityLogger.log("Organizer Logged Out: " + organizer.getID()); // LOGGING
                     System.out.println("Logging out...");
                     return;
                 default:
@@ -130,6 +125,7 @@ public class Test {
         }
 
         if (loggedIn != null) {
+            ActivityLogger.log("Player Login Success: " + loggedIn.getName()); // LOGGING
             System.out.println("Login successful!");
             viewUserProfile(loggedIn);
 
@@ -139,33 +135,59 @@ public class Test {
             if (ans.equals("yes")) {
                 PersonalitySurvey.runSurvey(loggedIn, sc);
                 CSVManager.exportPlayersToCSV("participants_sample.csv", players);
+                ActivityLogger.log("Player Retook Survey: " + loggedIn.getID()); // LOGGING
             }
-
             return;
         }
 
+        ActivityLogger.logWarning("Player Login Failed: Unknown ID " + id); // LOGGING
         System.out.println("No user found with ID: " + id);
         System.out.print("Would you like to register? (yes/no): ");
 
         String choice = sc.nextLine().trim().toLowerCase();
 
         if (!choice.equals("yes")) {
-            System.out.println("Returning to main menu...");
             return;
         }
 
         System.out.println("===== NEW USER REGISTRATION =====");
+
         System.out.print("Enter Name: ");
         String name = sc.nextLine();
+
         System.out.print("Enter Email: ");
         String email = sc.nextLine();
+
         System.out.print("Enter Preferred Game: ");
         String game = sc.nextLine();
-        System.out.print("Enter Skill Level (1-100): ");
-        int skill = Integer.parseInt(sc.nextLine());
+
+        int skill = 0;
+        boolean validSkill = false;
+
+        while (!validSkill) {
+            System.out.print("Enter Skill Level (1-100): ");
+            String input = sc.nextLine();
+
+            try {
+                skill = Integer.parseInt(input);
+
+                // Optional: Check if the number is actually within 1-100
+                if (skill >= 1 && skill <= 100) {
+                    validSkill = true; // Input is good, exit loop
+                } else {
+                    System.out.println("Error: Please enter a number between 1 and 100.");
+                }
+
+            } catch (NumberFormatException e) {
+                // This block runs if the user enters non-numeric text
+                System.out.println("Invalid input! Please enter a numeric value (e.g., 50).");
+            }
+        }
+
         System.out.print("Enter Preferred Role: ");
         String role = sc.nextLine();
 
+        System.out.println("\nRegistration Complete for " + name + "!");
         Player newPlayer = new Player(id, name, email, game, skill, role, 0, "Unknown");
         players.add(newPlayer);
 
@@ -174,6 +196,7 @@ public class Test {
 
         CSVManager.exportPlayersToCSV("participants_sample.csv", players);
 
+        ActivityLogger.log("New Player Registered: " + name + " (" + id + ")"); // LOGGING
         System.out.println("Registration complete!");
         viewUserProfile(newPlayer);
     }
