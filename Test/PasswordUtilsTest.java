@@ -17,12 +17,11 @@ public class PasswordUtilsTest {
     @Test
     public void testHashDifference() {
         String pass1 = "password";
-        String pass2 = "Password"; // Capital P
+        String pass2 = "Password";
 
         String hash1 = PasswordUtils.hashPassword(pass1);
         String hash2 = PasswordUtils.hashPassword(pass2);
 
-        // A tiny change in input should result in a totally different hash
         assertNotEquals("Hashes must be different for different inputs", hash1, hash2);
     }
 

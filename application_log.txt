@@ -27,3 +27,4 @@
 2025-11-29 11:21:35 | [INFO]  Organizer Login Success: Alice Smith (ORG001)
 2025-11-29 11:21:46 | [INFO]  Organizer Password Changed: ORG001
 2025-11-29 11:21:49 | [INFO]  Organizer Logged Out: ORG001
+2025-12-04 21:29:11 | [INFO]  Application Started.

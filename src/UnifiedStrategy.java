@@ -100,7 +100,7 @@ public class UnifiedStrategy implements TeamFormationStrategy {
                 .anyMatch(m -> m.getPreferredRole().equalsIgnoreCase(p.getPreferredRole()));
 
         if (!roleExists) {
-            score += NEW_ROLE_BONUS; // Reward adding a new role to the mix
+            score += NEW_ROLE_BONUS; // Reward new-role to the mix
         }
 
         return score;
