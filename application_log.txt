@@ -16,3 +16,14 @@
 2025-11-29 07:02:14 | [INFO]  Organizer Login Success: Alice Smith (ORG001)
 2025-11-29 07:02:23 | [INFO]  Generating teams using strategy: UnifiedStrategy
 2025-11-29 07:03:00 | [INFO]  Generating teams using strategy: UnifiedStrategy
+2025-11-29 07:55:48 | [INFO]  Application Started.
+2025-11-29 07:56:04 | [WARN]  Organizer Login Failed: Invalid Credentials for ID waefeaw
+2025-11-29 11:14:39 | [INFO]  Application Started.
+2025-11-29 11:14:59 | [INFO]  Organizer Login Success: Alice Smith (ORG001)
+2025-11-29 11:15:15 | [INFO]  Organizer Password Changed: ORG001
+2025-11-29 11:20:52 | [INFO]  Organizer Password Changed: ORG001
+2025-11-29 11:21:02 | [INFO]  Organizer Logged Out: ORG001
+2025-11-29 11:21:21 | [WARN]  Organizer Login Failed: Invalid Credentials for ID ORG001
+2025-11-29 11:21:35 | [INFO]  Organizer Login Success: Alice Smith (ORG001)
+2025-11-29 11:21:46 | [INFO]  Organizer Password Changed: ORG001
+2025-11-29 11:21:49 | [INFO]  Organizer Logged Out: ORG001
