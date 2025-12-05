@@ -2,7 +2,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Scanner;
 
-public class Main {
+public class Test {
 
     private static Scanner sc = new Scanner(System.in);
     private static final HashMap<String, Organizer> organizerMap = loadOrganizerMap();
