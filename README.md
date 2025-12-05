@@ -67,7 +67,7 @@ The core architecture consists of the following main classes (edit these to fit 
    - `organizers.csv` — List of organizers
 
 4. **Run the main class**
-   - Entry point: `src/.../Main.java` *(edit to your actual main file)*
+   - Entry point: `src/.../Test.java` *(edit to your actual main file)*
 
 5. **Output**
    - Generated teams and logs are saved to root-level CSV and TXT files.
