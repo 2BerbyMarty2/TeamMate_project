@@ -27,11 +27,3 @@
 2025-11-29 11:21:35 | [INFO]  Organizer Login Success: Alice Smith (ORG001)
 2025-11-29 11:21:46 | [INFO]  Organizer Password Changed: ORG001
 2025-11-29 11:21:49 | [INFO]  Organizer Logged Out: ORG001
-2025-12-04 21:29:11 | [INFO]  Application Started.
-2025-12-05 11:23:54 | [INFO]  Application Started.
-2025-12-05 16:29:02 | [INFO]  Application Started.
-2025-12-05 16:29:16 | [INFO]  Organizer Login Success: Alice Smith (ORG001)
-2025-12-05 16:35:57 | [INFO]  Application Started.
-2025-12-05 16:36:16 | [WARN]  Organizer Login Failed: Invalid Credentials for ID ORG003
-2025-12-05 16:36:37 | [INFO]  Organizer Login Success: Alice Smith (ORG001)
-2025-12-05 16:46:04 | [INFO]  Organizer Password Changed: ORG001
