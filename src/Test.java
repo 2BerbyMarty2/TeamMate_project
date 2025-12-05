@@ -190,6 +190,7 @@ public class Test {
     */
     public static void user_login() {
         System.out.println("========== Player LOGIN ==========");
+        System.out.println("New Player? Choose a unique ID.");
         System.out.print("Enter your Player ID: ");
         String id = sc.nextLine().trim();
 

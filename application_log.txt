@@ -27,3 +27,17 @@
 2025-11-29 11:21:35 | [INFO]  Organizer Login Success: Alice Smith (ORG001)
 2025-11-29 11:21:46 | [INFO]  Organizer Password Changed: ORG001
 2025-11-29 11:21:49 | [INFO]  Organizer Logged Out: ORG001
+2025-12-05 17:35:50 | [INFO]  Application Started.
+2025-12-05 17:36:01 | [INFO]  Player Login Success: Participant_84
+2025-12-05 17:36:23 | [INFO]  Player Login Success: Participant_86
+2025-12-05 20:46:05 | [INFO]  Application Started.
+2025-12-05 20:46:10 | [INFO]  Application Closed by User.
+2025-12-05 20:46:13 | [INFO]  Application Started.
+2025-12-05 20:46:24 | [INFO]  Player Login Success: Participant_89
+2025-12-05 20:46:35 | [INFO]  Player Retook Survey: P089
+2025-12-05 20:46:56 | [WARN]  Organizer Login Failed: Invalid Credentials for ID ORG003
+2025-12-05 20:47:09 | [WARN]  Organizer Login Failed: Invalid Credentials for ID ORG003
+2025-12-05 20:47:24 | [INFO]  Organizer Login Success: Alice Smith (ORG001)
+2025-12-05 20:47:29 | [INFO]  Organizer Logged Out: ORG001
+2025-12-05 20:47:37 | [INFO]  Organizer Login Success: Alice Smith (ORG001)
+2025-12-05 20:54:39 | [INFO]  Application Started.
