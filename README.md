@@ -51,36 +51,13 @@ The core architecture consists of the following main classes (edit these to fit 
 - **Singleton Pattern**: Logger instance ensures centralized logging.
 - **Strategy Pattern**: Allows switching between different team formation algorithms.
 
-## Setup Instructions
-
-1. **Clone the repository**
-   ```sh
-   git clone https://github.com/2BerbyMarty2/TeamMate_project.git
-   cd TeamMate_project
-   ```
-
-2. **Open in IntelliJ IDEA**  
-   *(or any Java IDE; ensure `.iml` file is loaded)*
-
-3. **Place CSV input data**  
-   - `participants_sample.csv` — List of participants
-   - `organizers.csv` — List of organizers
-
-4. **Run the main class**
-   - Entry point: `src/.../Test.java` *(edit to your actual main file)*
-
-5. **Output**
-   - Generated teams and logs are saved to root-level CSV and TXT files.
 
 ## Testing
 
 - All tests are located in the `Test` directory.
 - Run using your IDE’s test runner, or with `mvn test` if using Maven.
 
-## Contact
-
-For questions, contact the author via [GitHub](https://github.com/2BerbyMarty2).
 
 ---
 
-*This project is part of OOD coursework at [University Name]. Last updated: Dec 2025.*
+*This project is part of OOD coursework at [IIT]. Last updated: Dec 2025.*
